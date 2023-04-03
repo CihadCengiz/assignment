@@ -9,27 +9,24 @@ class Books extends ResourceController
     public function index()
     {
         $model = new BookModel();
-        $data = $model->findAll();
-        return $this->respond($data);
+        $data = $model->findAll();      //Find and 
+        return $this->respond($data);  //return all books in the database
     }
 
     public function findBook() {
-        
         $author = $this->request->getGet('author');
         $year = $this->request->getGet('year');
         $model = new BookModel();
-        $find = $model->like('author',$author)->like('publication_year', $year)->find();
+        $find = $model->like('author',$author)->like('publication_year', $year)->find(); //Find and return books based on "author" and "year" parameters
          
         if ($find){
             $response = [
                 'status' => 200,
-                'error' => null,
                 'data'  => $find
             ];
-        } else {
+        } else { //OnError response
             $response = [
                 'status' => 404,
-                'error' => null,
                 'data'  => 'No Data Found'
             ];
         }

@@ -5,7 +5,7 @@ class Books extends Migration
 {
     public function up()
     {
-        $this->forge->addField([
+        $this->forge->addField([ //Create Books table
             'id'    => [
                 'type'          => 'INT',
                 'constraint'    => 11,
@@ -31,7 +31,7 @@ class Books extends Migration
         $this->forge->addKey('id', true);
         $this->forge->createTable('books', true);
     }
-    public function down()    
+    public function down() //Drop Books table
     {        
         $this->forge->dropTable('books');
     }

@@ -3,18 +3,21 @@ import axios from 'axios';
 import "./FindBook.css"
 
 export default function FindBook() {
-  const [books, setBooks] = useState([]);
-  const [author, setAuthor] = useState('');
-  const [year, setYear] = useState<number>();
+  const [books, setBooks] = useState([]); //Books Array
+  const [author, setAuthor] = useState(''); //Typed Author
+  const [year, setYear] = useState<number>(); //Typed Year
 
+  //Set "Year" on input change
   const handleChangeYear = (e: React.ChangeEvent<HTMLInputElement>) => {
     setYear(parseInt(e.target.value));
   };
 
+  //Set "Author" on input change
   const handleChangeAuthor = (e: React.ChangeEvent<HTMLInputElement>) => {
     setAuthor(e.target.value);
   };
 
+  //Get Books from Database based on "Author" and "Year" parameters
   const handleFindBook = async () => {
     await axios
       .get(

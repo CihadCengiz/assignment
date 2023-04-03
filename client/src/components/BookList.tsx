@@ -5,14 +5,13 @@ import './BookList.css';
 $.DataTable = require('datatables.net');
 
 const ListBook = () => {
-  const [books, setBooks] = useState([] as any);
+  const [books, setBooks] = useState([] as any); //Books Array
 
   useEffect(() => {
-    $('#myTable').DataTable().destroy();
-    $('#myTable').DataTable({
+    $('#myTable').DataTable().destroy(); //Destroy DataTable to prevent errors
+    $('#myTable').DataTable({ //Create DataTable after fetch
       scrollX: false,
       tabIndex: 0,
-
       columns: [
         {
           data: 'title',
@@ -36,13 +35,10 @@ const ListBook = () => {
   }, [books]);
 
   useEffect(() => {
-    console.log(books);
-  }, [books]);
-
-  useEffect(() => {
     getBooks();
   }, []);
 
+  //Get Books from Database
   const getBooks = async () => {
     await axios
       .get('http://localhost:8080/books')

@@ -29,9 +29,8 @@ $routes->set404Override();
 
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
-// $routes->get('/', 'Home::index');
-$routes->resource('books');
-$routes->get('/findbook','Books::findBook');
+$routes->resource('books'); //Return books from database => "/" -> base route
+$routes->get('/findbook','Books::findBook'); //Return found books based on parameters from database => "/findbook" route
 
 /*
  * --------------------------------------------------------------------
