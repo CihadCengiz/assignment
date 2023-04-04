@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import axios from 'axios';
 import $ from 'jquery';
 import './BookList.css';
+import { Link } from 'react-router-dom';
 $.DataTable = require('datatables.net');
 
 const ListBook = () => {
@@ -9,7 +10,8 @@ const ListBook = () => {
 
   useEffect(() => {
     $('#myTable').DataTable().destroy(); //Destroy DataTable to prevent errors
-    $('#myTable').DataTable({ //Create DataTable after fetch
+    $('#myTable').DataTable({
+      //Create DataTable after fetch
       scrollX: false,
       tabIndex: 0,
       columns: [
@@ -58,9 +60,7 @@ const ListBook = () => {
         </thead>
       </table>
       <div>
-        <a href='/findbook'>
-          <button>Find By Author or Publication Year</button>
-        </a>
+        <Link to={'/findbook'}><button>Find By Author or Publication Year</button></Link>
       </div>
     </div>
   );

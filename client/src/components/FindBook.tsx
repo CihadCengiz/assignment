@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import axios from 'axios';
-import "./FindBook.css"
+import './FindBook.css';
+import { Link } from 'react-router-dom';
 
 export default function FindBook() {
   const [books, setBooks] = useState([]); //Books Array
@@ -26,7 +27,7 @@ export default function FindBook() {
         }`
       )
       .then((response) => setBooks(response.data.data));
-    };
+  };
 
   return (
     <div className='wrapper2'>
@@ -44,7 +45,9 @@ export default function FindBook() {
           type='text'
         />
         <button onClick={handleFindBook}>Find</button>
-        <a href='/'><button>Go Back</button></a>
+        <Link to={'/'}>
+          <button>Go Back</button>
+        </Link>
       </div>
       <div>
         <table>
